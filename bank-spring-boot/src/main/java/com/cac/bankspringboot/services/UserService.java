@@ -33,10 +33,13 @@ public class UserService {
     }
 
     public UserDTO createUser(UserDTO userDto){
-
+        User userValidated = validateUserByEmail(userDto);
+        if  (userValidated == null){
             User userSaved = repository.save(UserMapper.dtoToUser(userDto));
             return UserMapper.userToDto(userSaved);
-
+        } else {
+            throw new UserNotExistsException("Email ya registrado " + userDto.getEmail());
+        }
     }
 
 
@@ -80,5 +83,7 @@ public class UserService {
         return null;
     }
 
-
+    public User validateUserByEmail(UserDTO dto){
+        return repository.findByEmail(dto.getEmail());
+    }
 }
