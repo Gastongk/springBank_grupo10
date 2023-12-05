@@ -61,7 +61,5 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(service.deleteUser(id));
     }
 
-    // Metodo para validar caracteres del email
-
 
 }

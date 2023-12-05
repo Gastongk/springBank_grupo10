@@ -54,8 +54,7 @@ public class UserService {
             return "El usuario con id: " + id + " ha sido eliminado";
         } else {
             throw new UserNotExistsException("El usuario a eliminar elegido no existe");
-        }
-
+       }
     }
 
     public UserDTO updateUser (Long id, UserDTO dto) {
